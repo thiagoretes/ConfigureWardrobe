@@ -29,9 +29,9 @@ class WardRobeTest {
     void shouldCombineElementWithAllElements() {
         var element = Set.of(List.of(WardRobeElement.Fifty));
         var elements = Set.of(List.of(WardRobeElement.Fifty, WardRobeElement.Fifty),
-                List.of(WardRobeElement.Fifty,WardRobeElement.SeventyFive),
-                List.of(WardRobeElement.Fifty,WardRobeElement.OneHundred),
-                List.of(WardRobeElement.Fifty,WardRobeElement.OneHundredTwenty)
+                List.of(WardRobeElement.Fifty, WardRobeElement.SeventyFive),
+                List.of(WardRobeElement.Fifty, WardRobeElement.OneHundred),
+                List.of(WardRobeElement.Fifty, WardRobeElement.OneHundredTwenty)
         );
         assertEquals(elements, wardRobe.combine(element));
     }
@@ -39,12 +39,12 @@ class WardRobeTest {
     @Test
     void shouldCheckHowManyCanStillFitTheWall() {
         var elements = Set.of(List.of(WardRobeElement.Fifty, WardRobeElement.Fifty),
-                List.of(WardRobeElement.Fifty,WardRobeElement.SeventyFive),
-                List.of(WardRobeElement.Fifty,WardRobeElement.OneHundred),
-                List.of(WardRobeElement.Fifty,WardRobeElement.OneHundredTwenty),
-                List.of(WardRobeElement.Fifty,WardRobeElement.Fifty,WardRobeElement.Fifty),
-                List.of(WardRobeElement.Fifty,WardRobeElement.OneHundredTwenty, WardRobeElement.OneHundred),
-                List.of(WardRobeElement.Fifty,WardRobeElement.Fifty,WardRobeElement.Fifty,WardRobeElement.Fifty,WardRobeElement.Fifty)
+                List.of(WardRobeElement.Fifty, WardRobeElement.SeventyFive),
+                List.of(WardRobeElement.Fifty, WardRobeElement.OneHundred),
+                List.of(WardRobeElement.Fifty, WardRobeElement.OneHundredTwenty),
+                List.of(WardRobeElement.Fifty, WardRobeElement.Fifty, WardRobeElement.Fifty),
+                List.of(WardRobeElement.Fifty, WardRobeElement.OneHundredTwenty, WardRobeElement.OneHundred),
+                List.of(WardRobeElement.Fifty, WardRobeElement.Fifty, WardRobeElement.Fifty, WardRobeElement.Fifty, WardRobeElement.Fifty)
         );
 
         assertEquals(5, wardRobe.countCandidateCombinations(elements));
@@ -54,17 +54,17 @@ class WardRobeTest {
     void shouldStoreCombinationsThatFitTheWall() {
 
         var combinations = Set.of(List.of(WardRobeElement.Fifty, WardRobeElement.Fifty),
-                List.of(WardRobeElement.Fifty,WardRobeElement.SeventyFive),
-                List.of(WardRobeElement.Fifty,WardRobeElement.OneHundred),
-                List.of(WardRobeElement.Fifty,WardRobeElement.OneHundred,WardRobeElement.OneHundred),
-                List.of(WardRobeElement.Fifty,WardRobeElement.OneHundredTwenty),
-                List.of(WardRobeElement.Fifty,WardRobeElement.Fifty,WardRobeElement.Fifty),
-                List.of(WardRobeElement.Fifty,WardRobeElement.OneHundredTwenty, WardRobeElement.OneHundred),
-                List.of(WardRobeElement.Fifty,WardRobeElement.Fifty,WardRobeElement.Fifty,WardRobeElement.Fifty,WardRobeElement.Fifty)
+                List.of(WardRobeElement.Fifty, WardRobeElement.SeventyFive),
+                List.of(WardRobeElement.Fifty, WardRobeElement.OneHundred),
+                List.of(WardRobeElement.Fifty, WardRobeElement.OneHundred, WardRobeElement.OneHundred),
+                List.of(WardRobeElement.Fifty, WardRobeElement.OneHundredTwenty),
+                List.of(WardRobeElement.Fifty, WardRobeElement.Fifty, WardRobeElement.Fifty),
+                List.of(WardRobeElement.Fifty, WardRobeElement.OneHundredTwenty, WardRobeElement.OneHundred),
+                List.of(WardRobeElement.Fifty, WardRobeElement.Fifty, WardRobeElement.Fifty, WardRobeElement.Fifty, WardRobeElement.Fifty)
         );
         var validCombinations = Set.of(
-                List.of(WardRobeElement.Fifty,WardRobeElement.Fifty,WardRobeElement.Fifty,WardRobeElement.Fifty,WardRobeElement.Fifty),
-                List.of(WardRobeElement.Fifty,WardRobeElement.OneHundred,WardRobeElement.OneHundred)
+                List.of(WardRobeElement.Fifty, WardRobeElement.Fifty, WardRobeElement.Fifty, WardRobeElement.Fifty, WardRobeElement.Fifty),
+                List.of(WardRobeElement.Fifty, WardRobeElement.OneHundred, WardRobeElement.OneHundred)
         );
 
         wardRobe.storeValidCombinations(combinations);

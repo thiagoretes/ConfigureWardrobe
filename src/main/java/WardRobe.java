@@ -11,7 +11,7 @@ public class WardRobe {
 
     private Set<List<WardRobeElement>> validCombinations;
 
-    public WardRobe(){
+    public WardRobe() {
         this.validCombinations = new HashSet<>();
     }
 
@@ -30,7 +30,7 @@ public class WardRobe {
         Set<List<WardRobeElement>> nextCombinations = new HashSet<>();
         for (List<WardRobeElement> list : combinations) {
             for (int i = 0; i < 4; i++) {
-                var newList = new ArrayList<WardRobeElement>(list);
+                var newList = new ArrayList<>(list);
                 newList.add(wardRobeElements[i]);
                 newList.sort(Comparator.naturalOrder());
                 nextCombinations.add(newList);
@@ -43,14 +43,14 @@ public class WardRobe {
         int amountOfCandidateCombinations = 0;
         for (List<WardRobeElement> combination : combinations) {
             int size = combination.stream().reduce(0, (partialResult, element) -> partialResult + element.size, Integer::sum);
-            if(size < sizeOfWall) amountOfCandidateCombinations++;
+            if (size < sizeOfWall) amountOfCandidateCombinations++;
         }
         return amountOfCandidateCombinations;
     }
 
     public void storeValidCombinations(Set<List<WardRobeElement>> combinations) {
-        for(List<WardRobeElement> combination : combinations){
-            if(isValidCombination(combination)){
+        for (List<WardRobeElement> combination : combinations) {
+            if (isValidCombination(combination)) {
                 validCombinations.add(combination);
             }
         }
@@ -66,19 +66,19 @@ public class WardRobe {
 
         var combinations = wardRobe.combine();
 
-        while(wardRobe.countCandidateCombinations(combinations) > 0) {
+        while (wardRobe.countCandidateCombinations(combinations) > 0) {
             wardRobe.storeValidCombinations(combinations);
             combinations = wardRobe.combine(combinations);
         }
 
         Comparator<List<WardRobeElement>> combinationComparator = (e1, e2) -> e1.stream().reduce(
-                0, (partialResult, element) -> partialResult+element.value, Integer::sum).compareTo(e2.stream().reduce(
-                0, (partialResult, element) -> partialResult+element.value, Integer::sum
+                0, (partialResult, element) -> partialResult + element.value, Integer::sum).compareTo(e2.stream().reduce(
+                0, (partialResult, element) -> partialResult + element.value, Integer::sum
         ));
         var validCombinations = wardRobe.getValidCombinations().stream().sorted(combinationComparator).collect(Collectors.toList());
 
-        for(var combination : validCombinations){
-            int value = combination.stream().reduce(0, (partialResult, element) -> partialResult+element.value, Integer::sum);
+        for (var combination : validCombinations) {
+            int value = combination.stream().reduce(0, (partialResult, element) -> partialResult + element.value, Integer::sum);
             System.out.println(combination + " costs: " + value);
         }
 
